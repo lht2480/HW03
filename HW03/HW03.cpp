@@ -5,12 +5,12 @@ template <typename T>
 class SimpleVector
 {
 private:
-	T* data;
+	T* data;//타입이 T(어떤 타입이든 될수 있는)인 맴버변수 data
 	int currentSize;
 	int currentCapacity;
 
 public:
-	SimpleVector()
+	SimpleVector()//생성자
 	{
 		currentCapacity = 10;
 		currentSize = 0;
@@ -31,23 +31,25 @@ public:
 		if (currentSize < currentCapacity)
 		{
 			data[currentSize++] = value;
-		}
+		}	//현재의 사이즈가 용량보다 작다면 value값을 사이즈+1의 자리에 저장
 	}
+
 	void pop_back()
 	{
 		if (currentSize > 0)
 		{
 			--currentSize;
-		}
+		}	//현재 배열의 사이즈가 0보다 클때만 제일 뒤의 원소 제거
 	}
+
 	int size() const
 	{
 		return currentSize;
-	}
+	}	//현재 배열의 크기
 	int capacity() const
 	{
 		return currentCapacity;
-	}
+	}	//현재 배열의 용량
 	void print() const
 	{
 		for (int i = 0; i < currentSize; i++)
@@ -59,9 +61,10 @@ public:
 };
 int main()
 {
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	SimpleVector<int> vec;
 
-	for (int i = 0; i < 12; i++)
+	for (int i = 0; i < 9; i++)
 	{
 		vec.push_back(i);
 	}
